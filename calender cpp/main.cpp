@@ -9,10 +9,13 @@
 #include <string>
 #include "Calender code.h"
 #include "Add Event.h"
+#include "excessivecodes.h"
+
 using namespace std;
 
 int main() {
     int choice;
+    Add_event event;
 
     do {
         // Display menu
@@ -28,15 +31,20 @@ int main() {
         switch (choice) {
             case 1:
                 Calender_code();
+                cout << endl;
                 break;
             case 2:
-                // Add event code here
+                event.input();
+                event.addVector();
+                cout << endl;
                 break;
             case 3:
-                // Edit event code here
+                event.editElements();
+                cout << endl;
                 break;
             case 4:
-                // Delete event code here
+                event.deleteElement();
+                cout << endl;
                 break;
             case 5:
                 cout << "Exiting program..." << endl;
