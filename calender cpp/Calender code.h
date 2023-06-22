@@ -21,7 +21,7 @@ int FirstDayOfMonth(int month, int year);
 void printMonth(int dayoftheweek, int month);
 string countDigits(string num, int day);
 bool IsLeapYear(int year);
-void displaymonth(int *a, string *b, string month);
+bool displaymonth(int *a, string *b, string month);
 void viewmonthcode(int year);
 void viewdaycode(string month, int year);
 
@@ -83,9 +83,21 @@ void viewmonthcode(int year){
     string month;
     month_input input;
     
-    input.monthinput(a, month);
+    while(true){
+        try{
+            input.monthinput(&a, &month);
+            bool q = displaymonth(&a, &b, month);
+            if (q == true){
+                break;
+            }else{
+                throw 505;
+            }
+        }
+        catch(int num){
+            cout << "Try Again! error" << num << endl;
+        }
+    }
     
-    displaymonth(&a, &b, month);
     transform(b.begin(), b.end(), b.begin(), ::toupper);
     cout << "\n" << b << " " << year << endl;
     printMonth(FirstDayOfMonth(a,year), DaysInMonth(a, year));
@@ -113,7 +125,7 @@ void viewmonthcode(int year){
     
 }
 
-void displaymonth(int *a, string *b, string month){
+bool displaymonth(int *a, string *b, string month){
     
     while (true){
         for (int j =0; month[j]; j++){
@@ -193,10 +205,11 @@ void displaymonth(int *a, string *b, string month){
             break;
         }
         else{
-            cout << "Try again! Check for spelling errors" <<endl;
+            return false;
             break;
         }
     }
+    return true;
 }
 
 

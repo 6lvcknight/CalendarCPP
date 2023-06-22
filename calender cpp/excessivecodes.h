@@ -39,12 +39,12 @@ public:
         array[a] = temp; // Store the last date component
         //quickstorage[0] = array[0];
     }
-    void monthinput(int a, string month){
+    void monthinput(int *a, string *month){
         cout << "Enter the month of choice: ";
-        cin >> month;
+        cin >> *month;
         // Try to convert the input to an integer
-        istringstream iss(month);
-        iss >> a;
+        istringstream iss(*month);
+        iss >> *a;
     }
 };
 
